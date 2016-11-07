@@ -179,7 +179,7 @@ public class ObjectHelper {
                 Object firstField = field.get(first);
                 Object secondField = field.get(second);
                 boolean equals = checkIfEquals(fieldName + " > " + field.getName(), firstField, secondField, checkingSuccess);
-                if (checkingSuccess) {
+                if (!equals) {
                     Assert.assertTrue("Objects \"" + firstField + "\" and \"" + secondField + "\" of type \"" + field.getType().getSimpleName() + "\" in \"" + fieldName + " > " + field.getName() + "\" do not match", equals);
                 }
                 return equals;
