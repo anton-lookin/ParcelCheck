@@ -83,8 +83,8 @@ public class ObjectHelper {
             Collection collection = (Collection) clazz.newInstance();
             if (field == null) {
                 Field[] fields = clazz.getDeclaredFields();
-                for (Field field: fields) {
-                    Type gType = field.getGenericType();
+                for (Field f : fields) {
+                    Type gType = f.getGenericType();
                     if (gType instanceof ParameterizedType) {
                         ParameterizedType pType = (ParameterizedType)genericType;
                         Type type = pType.getActualTypeArguments()[0];
