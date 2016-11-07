@@ -132,6 +132,9 @@ public class ObjectHelper {
     }
 
     public static Object getTestObject(ObjectStack objectStack, Class clazz) throws Exception {
+        if (clazz.isEnum()) {
+            return null;
+        }
         Constructor constructor = clazz.getDeclaredConstructor();
         constructor.setAccessible(true);
         Assert.assertNotNull("The class " + clazz.getSimpleName() + " does not have an empty constructor", constructor);
