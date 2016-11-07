@@ -87,7 +87,7 @@ public class ObjectHelper {
                 for (Field f : fields) {
                     Type gType = f.getGenericType();
                     if (gType instanceof ParameterizedType) {
-                        ParameterizedType pType = (ParameterizedType)genericType;
+                        ParameterizedType pType = (ParameterizedType)gType;
                         Type type = pType.getActualTypeArguments()[0];
                         addObjectToCollection(objectStack, collection, type);
                         break;
