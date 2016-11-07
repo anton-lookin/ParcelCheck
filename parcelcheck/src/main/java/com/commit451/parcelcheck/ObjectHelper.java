@@ -155,7 +155,7 @@ public class ObjectHelper {
     }
 
     private static void addObjectToCollection(ObjectStack objectStack, Collection collection, Class clazz) throws Exception {
-        Object test = getObjectForClass(objectStack, clazz, (Field)null));
+        Object test = getObjectForClass(objectStack, clazz, (Field)null);
         if (test != null) {
             collection.add(test);
         }
