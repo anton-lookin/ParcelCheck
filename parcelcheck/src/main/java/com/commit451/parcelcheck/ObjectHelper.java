@@ -83,7 +83,7 @@ public class ObjectHelper {
             Collection collection = (Collection) clazz.newInstance();
             ParameterizedType type = (ParameterizedType) field.getGenericType();
             Class<?> genericType = (Class<?>) type.getActualTypeArguments()[0];
-            addObjectToCollection(objectStack, collection, genericType);
+            addObjectToCollection(objectStack, collection, genericType, field);
             return collection;
         } else if (clazz.isArray()) {
             return getObjectArray(objectStack, clazz);
@@ -141,8 +141,8 @@ public class ObjectHelper {
 
     }
 
-    private static void addObjectToCollection(ObjectStack objectStack, Collection collection, Class clazz) throws Exception {
-        Object test = getObjectForClass(objectStack, clazz, null);
+    private static void addObjectToCollection(ObjectStack objectStack, Collection collection, Class clazz, Field field) throws Exception {
+        Object test = getObjectForClass(objectStack, clazz, field);
         if (test != null) {
             collection.add(test);
         }
