@@ -82,14 +82,16 @@ public class ObjectHelper {
                 clazz = ArrayList.class;
             }
             Collection collection = (Collection) clazz.newInstance();
-            if (field == null) {
+            if (null == field) {
+                Class<?> genericType = ((ParameterizedType) clazz.getGenericSuperclass()).getActualTypeArguments()[0]
+                addObjectToCollection(objectStack, collection, genericType);
                 return collection;
             } else {
                 ParameterizedType type = (ParameterizedType) field.getGenericType();
                 Class<?> genericType = (Class<?>) type.getActualTypeArguments()[0];
                 addObjectToCollection(objectStack, collection, genericType);
+                return collection;
             }
-            return collection;
         } else if (clazz.isArray()) {
             return getObjectArray(objectStack, clazz);
         } else {
