@@ -83,7 +83,7 @@ public class ObjectHelper {
             }
             Collection collection = (Collection) clazz.newInstance();
             if (null == field) {
-                Class<?> genericType = ((ParameterizedType) clazz.getGenericSuperclass()).getActualTypeArguments()[0]
+                Class<?> genericType = ((ParameterizedType) clazz.getGenericSuperclass()).getActualTypeArguments()[0];
                 addObjectToCollection(objectStack, collection, genericType);
                 return collection;
             } else {
