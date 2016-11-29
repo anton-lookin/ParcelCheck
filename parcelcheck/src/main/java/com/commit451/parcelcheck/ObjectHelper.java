@@ -97,6 +97,9 @@ public class ObjectHelper {
             }
         } else if (clazz.isArray()) {
             return getObjectArray(objectStack, clazz);
+        } else if (Map.class.isAssignableFrom(clazz)) {
+            Object object = getTestMap(clazz);
+            return object;
         } else {
             Object object = getTestObject(objectStack, clazz);
             return object;
@@ -151,7 +154,13 @@ public class ObjectHelper {
             return model;
         }
         return null;
+    }
 
+    public static Object getTestMap(Class clazz) throws Exception {
+        Constructor constructor = clazz.getDeclaredConstructor();
+        constructor.setAccessible(true);
+        Assert.assertNotNull("The class " + clazz.getSimpleName() + " does not have an empty constructor", constructor);
+        return constructor.newInstance();
     }
 
     private static void addObjectToCollection(ObjectStack objectStack, Collection collection, Class clazz) throws Exception {
