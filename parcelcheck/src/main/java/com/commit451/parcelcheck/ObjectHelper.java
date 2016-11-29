@@ -12,6 +12,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -141,6 +142,9 @@ public class ObjectHelper {
 
     public static Object getTestObject(ObjectStack objectStack, Class clazz) throws Exception {
         if (clazz.isEnum()) {
+            return null;
+        }
+        if (BigDecimal.class.isAssignableFrom(clazz)) {
             return null;
         }
         Constructor constructor = clazz.getDeclaredConstructor();
