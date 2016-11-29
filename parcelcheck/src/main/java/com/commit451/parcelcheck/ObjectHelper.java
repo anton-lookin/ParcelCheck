@@ -230,6 +230,9 @@ public class ObjectHelper {
                 if (!secondMap.containsKey(key)) {
                     return false;
                 }
+                if (!checkIfEquals(key.toString(), firstMap.get(key), secondMap.get(key), checkingSuccess)) {
+                    return false;
+                }
             }
             return true;
         } else if (objectClass.isArray()) {
