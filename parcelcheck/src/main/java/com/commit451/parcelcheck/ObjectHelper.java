@@ -17,6 +17,8 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import dalvik.system.DexFile;
 
@@ -219,6 +221,15 @@ public class ObjectHelper {
                 Object firstObject = firstObjects.get(i);
                 Object secondObject = secondObjects.get(i);
                 return checkIfEquals(fieldName, firstObject, secondObject, checkingSuccess);
+            }
+            return true;
+        } else if (Map.class.isAssignableFrom(objectClass)) {
+            Map firstMap = (Map) first;
+            Map secondMap = (Map) second;
+            for (Object key : firstMap.keySet()) {
+                if (!secondMap.containsKey(key)) {
+                    return false;
+                }
             }
             return true;
         } else if (objectClass.isArray()) {
